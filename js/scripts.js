@@ -1,33 +1,42 @@
-// Scripting
 
 // Data source
-const url = "https://assets.codepen.io/16425/web-3-spring-2024-roster.json";
+// https://assets.codepen.io/16425/Spring-2025-Roster.json
+const url = "https://assets.codepen.io/16425/Spring-2025-Roster.json";
 
 // Get data
 fetch(url)
-  .then( response  => response.json())
-  .then( data  => {
-    
-    // check-check: is the data good?
+  .then(response => response.json())
+  .then(data => {
+	    // check-check: is the data good?
     console.log(data);
     console.log(data.Name);
     console.log(data.Image);
-
-    // get container for data
+	
+      // get container for data
     const roster = document.querySelector(".roster");
 
-    // loop through data
-    data.forEach( student => {
-      
+    // Loop through the data
+    data.forEach(student => {
       // template
       const template = `
-          <figure>
-            <figcaption> ${student.Name} </figcaption>
-            <img src=" ${student.Image} " alt=" ${student.Name} ">
-          </figure>
-       `;
+        <figure class="card" style="border-color: ${student.favoriteColor}">
+          <img src="${student.imageUrl}" alt="${student.name}">
+          <figcaption>
+            <h2 style="color: ${student.favoriteColor}">${student.name}</h2>
+            <p>Fun Fact: ${student.funFact}</p>
+            <p>Fav Artist/Band: ${student.favoriteBand}</p>
+            <p>${student.motto}</p>
+            <button class="emoji" style="border-color: ${student.favoriteColor}">
+              ${student.status}
+            </button>
+          </figcaption>
+        </figure>
+      `;
 
-      // insert EACH `student` record into container
       roster.insertAdjacentHTML("afterbegin", template);
+
+      // Set the CSS variable
+      const emojiCard = roster.querySelector(".card");
+      emojiCard.style.setProperty('--fav-color', student.favoriteColor);
     });
   });
