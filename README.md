@@ -15,9 +15,8 @@ Get, Show, and Style a Class Roster via our API data
 Use API endpoint for the _Collection_ provided in class. 
 
 ## Citations
-List your sources here
-
-[Font Share](https://www.fontshare.com/)
+* [Open Props](https://open-props.style/)
+* [FontShare](https://fontshare.com/)
 
 ## Why Does This Exist? 
 Thre are many have a no-code CMS, and GUIs for designing the templates. AirTable (and many others) also have an API that is accessible as a _headless CMS_. 
